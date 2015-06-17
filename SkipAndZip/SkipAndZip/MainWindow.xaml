@@ -1,0 +1,10 @@
+﻿<Window x:Class="SkipAndZip.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Skip and Zip Sample" Height="350" Width="525">
+        <StackPanel Margin="10">
+            <Label Content="please click anywhere on this window" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14"/>
+            <Label x:Name="_label" Content="distance" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16"/>
+        <Canvas x:Name="_box" Height="240"/>
+        </StackPanel>
+</Window>
