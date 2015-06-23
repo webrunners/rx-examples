@@ -1,0 +1,34 @@
+﻿<Window x:Class="RxTwitterSample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:rxTwitterSample="clr-namespace:RxTwitterSample"
+        Title="RxTwitterSample" Height="800" Width="1200">
+    <Window.Resources>
+        <rxTwitterSample:ImageConverter x:Key="ImageConverter"/>
+        <DataTemplate x:Key="TweetTemplate">
+            <StackPanel Orientation="Horizontal">
+
+                <Image Source="{Binding ProfileImageUrl, Converter={StaticResource ImageConverter}}" Width="48" Height="48" Margin="2" VerticalAlignment="Top"/>
+
+                <StackPanel Orientation="Vertical" Margin="5,0,0,0">
+                    <TextBlock Text="{Binding Text}" TextWrapping="Wrap" Width="Auto" HorizontalAlignment="Left"/>
+                    <TextBlock FontWeight="Bold" Text="{Binding Path=User}" HorizontalAlignment="Left"/>
+                </StackPanel>
+
+            </StackPanel>
+        </DataTemplate>
+    </Window.Resources>
+
+    <StackPanel Margin="10">
+        <DockPanel>
+            <Label DockPanel.Dock="Left" Content="Search:" Margin="0,0,10,0" FontSize="20"/>
+            <TextBox x:Name="SearchTextBox" FontSize="20" Focusable="True" Text="{Binding SearchTextBox, UpdateSourceTrigger=PropertyChanged}"/>
+        </DockPanel>
+        <GroupBox Header="{Binding HeaderAwesomeTweets}" FontSize="18" Margin="0,15,0,0" Padding="10">
+            <ListBox x:Name="AwesomeTweetsListBox" ItemsSource="{Binding AwesomeTweets}" Height="300" FontSize="14" BorderThickness="0" ItemTemplate="{StaticResource TweetTemplate}"/>
+        </GroupBox>
+        <GroupBox Header="{Binding HeaderBoringTweets}" FontSize="18" Margin="0,15,0,0" Padding="10">
+            <ListBox x:Name="BoringTweetsListBox" ItemsSource="{Binding BoringTweets}" Height="300" FontSize="14" BorderThickness="0" ItemTemplate="{StaticResource TweetTemplate}"/>
+        </GroupBox>
+    </StackPanel>
+</Window>
