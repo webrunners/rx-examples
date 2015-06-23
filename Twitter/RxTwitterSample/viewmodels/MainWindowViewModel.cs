@@ -55,8 +55,8 @@ namespace RxTwitterSample.viewmodels
             var tweets = searchTexts
                 .Select(allTweetsAbout)
                 .Switch()
-                .Select(classifyTweet)
                 .Sample(TimeSpan.FromSeconds(1))
+                .Select(classifyTweet)
                 .Select(x => new { x.Score, x.Tweet })
                 .Publish();
 
